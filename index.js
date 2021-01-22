@@ -5,30 +5,37 @@ class Solution{
         let numbersWithCount = {};
         let numbersCounting = {}
         let numberSlice = {};
+        let maxSlice = 0;
+        let numberWithMaxSlice;
 
         for (let number of A) {
            if(numbersCounting[number] == undefined){
                 let {max, min} = Solution.getMaxAndMinPosition(A, number);
                 numberSlice[number] = (max+1) - min;
                 numbersCounting[number] = true;
+
+                if(numberSlice[number] > maxSlice){
+                    maxSlice = numberSlice[number];
+                    numberWithMaxSlice = number;
+                }
            }
         }
 
-        return numberSlice;
+        return numberWithMaxSlice;
     }
 
     static getMaxAndMinPosition(array, number){
-        let posiciones = [];
+        let positions = [];
         let max, min = 0;
 
         for (let i = 0 ; i < array.length ; i++) {
             if(array[i] == number){
-                posiciones.push(i);
+                positions.push(i);
             }
         }
 
-        max = Math.max.apply(null, posiciones);
-        min = Math.min.apply(null, posiciones);
+        max = Math.max.apply(null, positions);
+        min = Math.min.apply(null, positions);
 
         return { max : max, min : min };
     }
@@ -37,5 +44,5 @@ class Solution{
 }
 
 console.log(Solution.solution([
-    1,1,3,4,1,4,5,6,1,5
+    4,1,5,6,5,6,6,5
 ]));
