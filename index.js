@@ -4,7 +4,6 @@ class Solution{
 
         let numberSlice = {};
         let maxSlice = 0;
-        let numberWithMaxSlice;
 
         for (let number of A) {
            if(numberSlice[number] == undefined){
@@ -13,12 +12,11 @@ class Solution{
 
                 if(numberSlice[number] > maxSlice){
                     maxSlice = numberSlice[number];
-                    numberWithMaxSlice = number;
                 }
            }
         }
 
-        return numberWithMaxSlice;
+        return maxSlice;
     }
 
     static getMaxAndMinPosition(array, number){
@@ -41,5 +39,5 @@ class Solution{
 }
 
 console.log(Solution.solution([
-    4,1,5,6,5,6,6,5,6,6,4
+    4,1,5,6,5,6,6,5,6,6
 ]));
